@@ -1,0 +1,21 @@
+{
+    "name": "envoytest/module-directtocart",
+    "description": "Adds product directly to cart through custom created link.",
+    "license": "OSL-3.0",
+    "authors": [
+        {
+            "email": "info@mage2gen.com",
+            "name": "Mage2Gen"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "EnvoyTest\\DirectToCart\\": ""
+        }
+    }
+}

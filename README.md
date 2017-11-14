@@ -2,12 +2,12 @@
 This is a Magento 2 module that takes a customer to your magento store and adds a product(s) to the cart automatically.
 
 # Installation
-These two commands will add the repository to your composer.json file and then clone the repo into your magento installation.
+Run these two commands in the root of your magento installation and they will add the repository to your composer.json file and then clone the repo into your magento installation.
 
 		composer config repositories.direct-to-cart git https://github.com/timbits07/magento-direct-to-cart
 		composer require envoy-test/direct-to-cart:dev-master
 
-Then you must enable the module and upgrade the magento setup
+Then while still in the root of your magento install you must enable the module and upgrade the magento setup
 
 		php bin/magento module:enable EnvoyTest_DirectToCart
 		php bin/magento setup:ugrade

@@ -1,21 +1,23 @@
 {
-    "name": "envoytest/module-directtocart",
-    "description": "Adds product directly to cart through custom created link.",
-    "license": "OSL-3.0",
+    "name": "envoy-test/direct-to-cart",
+    "description": "This is a Magento 2 module that takes a customer to your magento store and adds a product(s) to the cart automatically.",
+    "require": {
+    },
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "extra": {
+        "map": [
+            [
+                "*",
+                "EnvoyTest/DirectToCart"
+            ]
+        ]
+    },
     "authors": [
         {
-            "email": "info@mage2gen.com",
-            "name": "Mage2Gen"
+            "name": "Tim Storey",
+            "homepage": "https://timbits07.github.io",
+            "role": "Developer"
         }
-    ],
-    "minimum-stability": "dev",
-    "require": {},
-    "autoload": {
-        "files": [
-            "registration.php"
-        ],
-        "psr-4": {
-            "EnvoyTest\\DirectToCart\\": ""
-        }
-    }
+    ]
 }

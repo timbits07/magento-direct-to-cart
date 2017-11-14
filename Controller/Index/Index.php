@@ -47,17 +47,21 @@ class Index extends \Magento\Framework\App\Action\Action
     public function execute()
     {
         try {
-            $params = $this->getRequest()->getParams();
+            $expires = $this->getRequest()->getParam('expires', 0);
+            $products = $this->getRequest()->getParam('products', false);
+
+            if($expires > time() && $products != false){
+                $this->_addProductsToCart($products);
+                $this->getResponse()->setRedirect('checkout/cart/index');
+            } else {
+                $this->messageManager->addWarning(__('This link seems to be expired or broken. Please contact customer support for assistance.'));
+                $this->getResponse()->setRedirect('checkout/cart/index');
+            }
             
-            $this->_addProductsToCart($params);
-            
-            $this->getResponse()->setRedirect('checkout/cart/index');
-            //return $this->jsonResponse($params);
         } catch (\Magento\Framework\Exception\LocalizedException $e) {
-            $this->messageManager->addSuccess(__('There appears to have been an error. Please contact customer support.'));
+            $this->messageManager->addError(__('There appears to have been an error. Please contact customer support for assistance.'));
         } catch (\Exception $e) {
-            $this->logger->critical($e);
-            $this->messageManager->addSuccess(__('There appears to have been an error. Please contact customer support.'));
+            $this->messageManager->addError(__('There appears to have been an error. Please contact customer support for assistance.'));
         }
     }
 
@@ -76,9 +80,9 @@ class Index extends \Magento\Framework\App\Action\Action
     /**
      * Add products to cart
      */
-    private function _addProductsToCart($params)
+    private function _addProductsToCart($products)
     {
-        $productIds = explode(',', $params['products']);
+        $productIds = explode(',', $products);
 
         foreach ($productIds as $prodId) {
             $details = ['qty' => 1];
